@@ -1,5 +1,7 @@
+use std::env::args;
+
 fn main() {
-    let out = match std::env::args().nth(1) {
+    let out = match args().nth(1) {
         Some(input) => input,
         None => String::from("y"),
     };
