@@ -6,5 +6,6 @@ Needed some sample applications to build to help me learn [Rust](https://rust-la
 ## Status
 | Utility | Completeness | Cross Platform |
 | --- | --- | --- |
+| false | 100% | yes |
 | yes | 100% | yes|
  
