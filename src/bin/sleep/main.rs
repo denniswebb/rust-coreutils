@@ -26,26 +26,6 @@ fn str_to_duration(input: &str) -> Duration {
     }
 }
 
-#[test]
-fn complex_string_to_duration() {
-    assert_eq!(Duration::from_secs((60*60*24) + (60*60*2) + (60*3) + 4), str_to_duration("1d2h3m4s"))
-}
-
-#[test]
-fn junk_string_to_zero_duration() {
-    assert_eq!(Duration::from_secs(0), str_to_duration("rustaceans"))
-}
-
-#[test]
-fn number_to_duration() {
-    assert_eq!(Duration::from_secs(5), str_to_duration("5"))
-}
-
-#[test]
-fn simple_string_to_duration() {
-    assert_eq!(Duration::from_secs(60), str_to_duration("1m"))
-}
-
 fn usage() {
     println!(
 "usage: {cmd} NUMBER[SUFFIX]...
@@ -58,4 +38,30 @@ examples: {cmd} 5
             .to_str()
             .unwrap()
     )
+}
+
+#[cfg(test)]
+mod should {
+    use super::*;
+    use std::time::Duration;
+
+    #[test]
+    fn convert_cmplex_string_to_duration() {
+        assert_eq!(Duration::from_secs((60*60*24) + (60*60*2) + (60*3) + 4), str_to_duration("1d2h3m4s"))
+    }
+
+    #[test]
+    fn convert_junk_string_to_0_seconds() {
+        assert_eq!(Duration::from_secs(0), str_to_duration("rustaceans"))
+    }
+
+    #[test]
+    fn convert_number_to_seconds() {
+        assert_eq!(Duration::from_secs(5), str_to_duration("5"))
+    }
+
+    #[test]
+    fn convert_string_to_duration() {
+        assert_eq!(Duration::from_secs(60), str_to_duration("1m"))
+    }
 }
